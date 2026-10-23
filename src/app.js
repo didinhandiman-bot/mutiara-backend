@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
+const laboratoriumRoutes = require('./routes/laboratoriumRoutes');
 
 const app = express();
 
@@ -33,5 +34,6 @@ app.get('/', (req, res) => {
 
 // API Routes Prefix
 app.use('/auth', authRoutes);
+app.use('/laboratorium', laboratoriumRoutes);
 
 module.exports = app;
