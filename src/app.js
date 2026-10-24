@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const laboratoriumRoutes = require('./routes/laboratoriumRoutes');
+const regulasiRoutes = require('./routes/regulasiRoutes');
 
 const app = express();
 
@@ -27,6 +29,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// Static file serving untuk file publik (mis. PDF regulasi)
+const storagePath = path.join(__dirname, '../public/storage');
+console.log('[Static Storage] Serving files from:', storagePath);
+app.use('/storage', express.static(storagePath));
+
 // Health Check Route
 app.get('/', (req, res) => {
   res.json({ success: true, message: 'API BPPMHKP Backend Running...' });
@@ -35,5 +42,6 @@ app.get('/', (req, res) => {
 // API Routes Prefix
 app.use('/auth', authRoutes);
 app.use('/laboratorium', laboratoriumRoutes);
+app.use('/regulasi', regulasiRoutes);
 
 module.exports = app;
