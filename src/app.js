@@ -1,12 +1,19 @@
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const path = require('path');
-const authRoutes = require('./routes/authRoutes');
-const laboratoriumRoutes = require('./routes/laboratoriumRoutes');
-const regulasiRoutes = require('./routes/regulasiRoutes');
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+import authRoutes from './routes/authRoutes.js';
+import laboratoriumRoutes from './routes/laboratoriumRoutes.js';
+import regulasiRoutes from './routes/regulasiRoutes.js';
+import registrasiMitraRoutes from './routes/registrasiMitra.routes.js';
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // 1. Definisikan array allowedOrigins terlebih dahulu
 const allowedOrigins = [
@@ -43,5 +50,6 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/laboratorium', laboratoriumRoutes);
 app.use('/regulasi', regulasiRoutes);
+app.use('/registrasi-mitra', registrasiMitraRoutes);
 
-module.exports = app;
+export default app;

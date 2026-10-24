@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import authController from '../controllers/authController.js';
+import { verifyToken } from '../middlewares/authMiddleware.js';
+
 const router = express.Router();
-const authController = require('../controllers/authController');
-const { verifyToken } = require('../middlewares/authMiddleware');
 
 // Endpoint Publik
 router.post('/register', authController.register);
@@ -14,4 +15,4 @@ router.post('/users', verifyToken, authController.createUser);
 router.put('/users/:id', verifyToken, authController.updateUser);
 router.delete('/users/:id', verifyToken, authController.deleteUser);
 
-module.exports = router;
+export default router;

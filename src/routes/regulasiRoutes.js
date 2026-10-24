@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+import regulasiController from '../controllers/regulasiController.js';
+
 const router = express.Router();
-const regulasiController = require('../controllers/regulasiController');
 
 // Endpoint Publik (tanpa verifyToken)
 router.get('/', regulasiController.getRegulasi);
 router.get('/:id', regulasiController.getRegulasiById);
 router.post('/:id/download', regulasiController.trackDownload);
 
-module.exports = router;
+export default router;

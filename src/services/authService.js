@@ -1,6 +1,6 @@
-const userRepository = require('../repositories/userRepository');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import userRepository from '../repositories/userRepository.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 class AuthService {
   // Logika Register User Baru
@@ -73,4 +73,4 @@ class AuthService {
   }
 }
 
-module.exports = new AuthService();
+export default new AuthService();

@@ -1,4 +1,4 @@
-const laboratoriumRepository = require('../repositories/laboratoriumRepository');
+import laboratoriumRepository from '../repositories/laboratoriumRepository.js';
 
 // Konversi nilai koordinat (DECIMAL MySQL dikembalikan sebagai string) ke Number
 const toCoordinate = (value) => {
@@ -57,4 +57,4 @@ class LaboratoriumService {
   }
 }
 
-module.exports = new LaboratoriumService();
+export default new LaboratoriumService();

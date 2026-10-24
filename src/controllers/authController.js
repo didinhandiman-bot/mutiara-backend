@@ -1,8 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../config/database');
-const authService = require('../services/authService');
-const userRepository = require('../repositories/userRepository');
+import db from '../config/database.js';
+import authService from '../services/authService.js';
+import userRepository from '../repositories/userRepository.js';
 
 class AuthController {
   // 1. Controller Register
@@ -227,4 +225,4 @@ class AuthController {
   }
 }
 
-module.exports = new AuthController();
+export default new AuthController();

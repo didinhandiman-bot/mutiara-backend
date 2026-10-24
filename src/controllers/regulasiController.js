@@ -1,4 +1,4 @@
-const regulasiService = require('../services/regulasiService');
+import regulasiService from '../services/regulasiService.js';
 
 class RegulasiController {
   // 1. GET /regulasi
@@ -69,4 +69,4 @@ class RegulasiController {
   }
 }
 
-module.exports = new RegulasiController();
+export default new RegulasiController();

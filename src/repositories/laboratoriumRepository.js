@@ -1,10 +1,10 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class LaboratoriumRepository {
   // 1. Ambil seluruh titik laboratorium yang memiliki koordinat
   async getAllMapMarkers() {
     const [rows] = await db.query(`
-      SELECT 
+      SELECT
           r.KD_UNIT AS kd_unit,
           COALESCE(r.NM_PENDEK_BARU, u.nama_lembaga) AS nama_lab,
           r.NM_UNIT_BARU AS nama_lengkap,
@@ -24,7 +24,7 @@ class LaboratoriumRepository {
       LEFT JOIN upt_kemampuan_uji ku ON u.id = ku.upt_id
       LEFT JOIN parameter_uji p ON ku.parameter_id = p.id
       LEFT JOIN kategori_uji k ON p.kategori_id = k.id
-      WHERE r.BUJUR IS NOT NULL 
+      WHERE r.BUJUR IS NOT NULL
         AND r.LINTANG IS NOT NULL
         AND TRIM(r.BUJUR) != ''
         AND TRIM(r.LINTANG) != ''
@@ -39,7 +39,7 @@ class LaboratoriumRepository {
   async getDetailByKdUnit(kdUnit) {
     const [rows] = await db.query(
       `
-      SELECT 
+      SELECT
           r.KD_UNIT AS kd_unit,
           COALESCE(r.NM_PENDEK_BARU, u.nama_lembaga) AS nama_lab,
           r.NM_UNIT_BARU AS nama_lengkap,
@@ -71,7 +71,7 @@ class LaboratoriumRepository {
   async getParametersByKdUnit(kdUnit) {
     const [rows] = await db.query(
       `
-      SELECT 
+      SELECT
           k.nama_kategori,
           p.nama_parameter,
           COALESCE(ku.metode_khusus, p.metode_acuan) AS metode_uji,
@@ -90,4 +90,4 @@ class LaboratoriumRepository {
   }
 }
 
-module.exports = new LaboratoriumRepository();
+export default new LaboratoriumRepository();

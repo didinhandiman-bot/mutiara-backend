@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const verifyToken = (req, res, next) => {
-  // Ambii header Authorization (Format: Bearer )
+  // Ambil header Authorization (Format: Bearer <token>)
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
@@ -25,4 +25,4 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = { verifyToken };
+export { verifyToken };

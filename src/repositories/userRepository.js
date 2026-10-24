@@ -1,4 +1,5 @@
-const db = require('../config/database');
+import db from '../config/database.js';
+import bcrypt from 'bcrypt';
 
 class UserRepository {
   // 1. Cari user berdasarkan email
@@ -10,7 +11,7 @@ class UserRepository {
   // 2. Cari user berdasarkan ID
   async findById(id) {
     const [rows] = await db.query(
-      'SELECT id, nama, email, role, created_at FROM users WHERE id = ?', 
+      'SELECT id, nama, email, role, created_at FROM users WHERE id = ?',
       [id]
     );
     return rows[0] || null;
@@ -28,9 +29,8 @@ class UserRepository {
   // 4. Update user
   async update(id, data) {
     const { nama, email, password, role } = data;
-    
+
     if (password) {
-      const bcrypt = require('bcrypt');
       const hashedPassword = await bcrypt.hash(password, 10);
       const result = await db.query(
         'UPDATE users SET nama = ?, email = ?, password = ?, role = ? WHERE id = ?',
@@ -53,4 +53,4 @@ class UserRepository {
   }
 }
 
-module.exports = new UserRepository();
+export default new UserRepository();

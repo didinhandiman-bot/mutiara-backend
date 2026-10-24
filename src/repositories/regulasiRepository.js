@@ -1,4 +1,4 @@
-const db = require('../config/database');
+import db from '../config/database.js';
 
 class RegulasiRepository {
   // 1. Ambil daftar regulasi aktif dengan filter dan pagination
@@ -63,4 +63,4 @@ class RegulasiRepository {
   }
 }
 
-module.exports = new RegulasiRepository();
+export default new RegulasiRepository();

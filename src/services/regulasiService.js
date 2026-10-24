@@ -1,4 +1,4 @@
-const regulasiRepository = require('../repositories/regulasiRepository');
+import regulasiRepository from '../repositories/regulasiRepository.js';
 
 class RegulasiService {
   // 1. Ambil daftar regulasi dengan validasi parameter dan pagination
@@ -38,4 +38,4 @@ class RegulasiService {
   }
 }
 
-module.exports = new RegulasiService();
+export default new RegulasiService();

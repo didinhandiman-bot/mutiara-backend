@@ -1,4 +1,4 @@
-const laboratoriumService = require('../services/laboratoriumService');
+import laboratoriumService from '../services/laboratoriumService.js';
 
 class LaboratoriumController {
   // 1. GET /laboratorium/peta
@@ -48,4 +48,4 @@ class LaboratoriumController {
   }
 }
 
-module.exports = new LaboratoriumController();
+export default new LaboratoriumController();
