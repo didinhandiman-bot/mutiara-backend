@@ -48,6 +48,7 @@ const UpiNoreg = sequelize.define(
   {
     tableName: 'upi_noreg',
     timestamps: true,
+    underscored: true,
   }
 );
 

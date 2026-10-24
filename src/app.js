@@ -52,4 +52,15 @@ app.use('/laboratorium', laboratoriumRoutes);
 app.use('/regulasi', regulasiRoutes);
 app.use('/registrasi-mitra', registrasiMitraRoutes);
 
+// Error handler middleware (tangkap error dari next(error))
+app.use((err, req, res, next) => {
+  console.error('[Error Handler]', err.original || err);
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || 'Terjadi kesalahan pada server',
+    ...(process.env.NODE_ENV === 'development' && { detail: err.original || err }),
+  });
+});
+
 export default app;

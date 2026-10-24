@@ -50,6 +50,7 @@ const MitraRequirement = sequelize.define(
   {
     tableName: 'mitra_requirements',
     timestamps: true,
+    underscored: true,
   }
 );
 

@@ -10,7 +10,11 @@ class RegistrasiMitraController {
         data,
       });
     } catch (error) {
-      next(error);
+      console.error(error.original || error);
+      return res.status(500).json({
+        success: false,
+        message: error.message || 'Gagal mengambil data persyaratan mitra',
+      });
     }
   }
 
@@ -31,7 +35,11 @@ class RegistrasiMitraController {
         pagination: result.pagination,
       });
     } catch (error) {
-      next(error);
+      console.error(error.original || error);
+      return res.status(500).json({
+        success: false,
+        message: error.message || 'Gagal mengambil data direktori UPI Noreg',
+      });
     }
   }
 
@@ -44,7 +52,11 @@ class RegistrasiMitraController {
         data,
       });
     } catch (error) {
-      next(error);
+      console.error(error.original || error);
+      return res.status(500).json({
+        success: false,
+        message: error.message || 'Gagal mengambil daftar negara mitra',
+      });
     }
   }
 }
