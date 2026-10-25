@@ -36,10 +36,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Static file serving untuk file publik (mis. PDF regulasi)
-const storagePath = path.join(__dirname, '../public/storage');
-console.log('[Static Storage] Serving files from:', storagePath);
-app.use('/storage', express.static(storagePath));
+// Static file serving untuk seluruh folder public
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Health Check Route
 app.get('/', (req, res) => {
