@@ -9,6 +9,7 @@ import authRoutes from './routes/authRoutes.js';
 import laboratoriumRoutes from './routes/laboratoriumRoutes.js';
 import regulasiRoutes from './routes/regulasiRoutes.js';
 import registrasiMitraRoutes from './routes/registrasiMitra.routes.js';
+import sertifikasiKpiRoutes from './routes/sertifikasiKpiRoutes.js';
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use('/auth', authRoutes);
 app.use('/laboratorium', laboratoriumRoutes);
 app.use('/regulasi', regulasiRoutes);
 app.use('/registrasi-mitra', registrasiMitraRoutes);
+app.use('/api/v1/public', sertifikasiKpiRoutes);
 
 // Error handler middleware (tangkap error dari next(error))
 app.use((err, req, res, next) => {
